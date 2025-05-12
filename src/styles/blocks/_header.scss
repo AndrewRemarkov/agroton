@@ -1,0 +1,60 @@
+@use '../helpers' as *;
+
+.header {
+  padding: rem(30) 0;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-menu {
+    &__list {
+      @include fluid-text(16, 14);
+
+      display: flex;
+      font-weight: 400;
+      text-transform: uppercase;
+      column-gap: 30px;
+    }
+
+    &__link {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 1px;
+        background-color: var(--color-dark);
+        transition: width var(--transition-duration) ease;
+        content: '';
+        transform: translateX(-50%);
+      }
+
+      @include hover {
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__contacts {
+    @include fluid-text(16, 14);
+
+    display: inline-block;
+    padding: rem(10) rem(40);
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--color-light);
+    background-color: var(--color-dark);
+    border: none;
+    border-radius: rem(50);
+    transition: transform var(--transition-duration) ease;
+    @include hover {
+      transform: scale(1.2);
+    }
+  }
+}
